@@ -91,17 +91,18 @@ h6 {
 
 /*!----------*/
 body {
-    background-color: #a2a2a2;
+    background-color: #ffa6a6;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
+    background: url(1.jpg);
 }
 
 input,
 button,
 textarea {
-    border: 2px solid rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(96, 0, 108, 0.6);
     background-image: none;
-    background-color: #dadad3;
+    background-color: #f3f3bc;
     -webkit-box-shadow: none;
     box-shadow: none;
     padding: 5px;
@@ -124,8 +125,8 @@ button {
 }
 
 select {
-    border: 2px solid rgba(0, 0, 0, 0.6);
-    background-color: #fff;
+    border: 2px solid rgba(149, 0, 144, 0.6);
+    background-color: rgb(246, 255, 216);
     min-width: 200px;
 }
 
@@ -134,8 +135,8 @@ select {
     margin-top: 50px;
     margin-bottom: 50px;
     max-width: 300px;
-    background-color: #fff;
-    border: 1px solid black;
+    background-color: rgb(244, 187, 255);
+    border: 1px solid rgb(255, 0, 234);
 }
 
 .form__body {
@@ -194,7 +195,7 @@ select {
     -ms-flex-direction: column;
     flex-direction: column;
     word-wrap: break-word;
-    color: #5A161B;
+    color: #ff0011;
     width: 200px;
     background-color: #C58D91;
     border: 2px solid rgba(0, 0, 0, 0.6);
