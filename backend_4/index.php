@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	}
 
 	$message = array();
-	checkCookies('name', $message);
+	//проверяет cookies и на правильный ответ и на ошибку
+	checkCookies('name', $message); 
 	checkCookies('email', $message);
 	checkCookies('year', $message);
 	checkCookies('gender', $message);
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if (!isset($_POST["super-powers"])) {
 			$errors['super-powers'] = "Выберите хотя бы одну суперспособность!";
 		} else {
+			//массив супер сил, который проходит по значениям
 			foreach ($_POST["super-powers"] as $value) {
 				if (intval($value) < 1 || 3 < intval($value)) {
 					$requestError = true;
@@ -85,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		writeCookies('gender', $errors);
 		writeCookies('numlimbs', $errors);
 		writeCookies('biography', $errors);
+		//если oшибка супер-силы задана
 
 		if (isset($errors['super-powers'])) {
 			setcookie('super-powers-error', $errors['super-powers'], time() + 60 * 60 * 24);
@@ -98,12 +101,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			}
 		}
 	}
-
+	//если есть ошибки выходит из скрипта
 	if (isset($errors)) {
 		header("Location: index.php");
 		exit();
 	}
-
+	
+	//в переменные сохраняет все поля(переменные) и отправляет уже в базу данных
 	$name = $_POST["name"];
 	$email = $_POST["email"];
 	$year = intval($_POST["year"]);
@@ -113,8 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$biography = $_POST["biography"];
 
 	$serverName = 'localhost';
-	$user = "u47565";
-	$pass = "7165854";
+	$user = "u40986";
+	$pass = "2343334";
 	$dbName = $user;
 
 	$db = new PDO("mysql:host=$serverName;dbname=$dbName", $user, $pass, array(PDO::ATTR_PERSISTENT => true));
@@ -161,6 +165,7 @@ function checkCookies($name, &$message)
 		$message[$name . '-error'] = '';
 	}
 }
+//записываем правильный ответ или ошибку
 function writeCookies($name, &$errors)
 {
 	if (isset($errors[$name])) {
