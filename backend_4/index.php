@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if (!empty($_POST)) {
 		if (empty($_POST["name"])) {
 			$errors['name'] = "Введите имя!";
+			//preg_match() выполняет проверку на соответствие регулярному вырожению
 		} elseif (!preg_match("/^\s*[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?\s*$/u", $_POST["name"])) {
 			$errors['name'] = "Несуществующее имя!";
 		}
@@ -80,8 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 	if ($requestError) {
 		setcookie("request-error", '1', time() + 60 * 60 * 24);
+		//делаем перенаправление
 		header("Location: index.php");
 	} else {
+		//записываем правильный ответ или ошибку
 		writeCookies('name', $errors);
 		writeCookies('email', $errors);
 		writeCookies('year', $errors);
