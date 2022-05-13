@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if (!empty($_COOKIE['save'])) {
+		//setcookie() задаёт cookie, которое будет передано клиенту вместе с другими HTTP-заголовками
 		setcookie("save", '', time() - 60 * 60 * 24);
 		$fheader =  "<div class='form__container form__container_good'><span class='form__span'>Ваши данные отправленны!</span></div>";
 	} elseif (!empty($_COOKIE['request-error'])) {
